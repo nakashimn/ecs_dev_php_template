@@ -1,0 +1,17 @@
+{
+	"name": "ecs_dev_php_template",
+	"dockerComposeFile": "../compose.yaml",
+	"service": "ecs_dev_php_template",
+	"workspaceFolder": "/workspace",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"xdebug.php-pack",
+				"ms-toolsai.jupyter",
+				"donjayamanne.githistory",
+				"eamodio.gitlens",
+				"ryuta46.multi-command"
+			]
+		}
+	}
+}
