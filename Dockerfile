@@ -33,6 +33,22 @@ RUN git config --global user.name ${GIT_USERNAME}
 RUN git config --global user.email ${GIT_EMAIL_ADDRESS}
 
 ################################################################################
+# testing
+################################################################################
+FROM php as test
+
+ENV TZ Asia/Tokyo
+
+COPY --from=builder /usr/local/bin /usr/local/bin
+COPY --from=builder /usr/local/lib /usr/local/lib
+RUN composer require --dev phpunit/phpunit
+
+COPY ./app/src /app/src
+COPY ./app/assets /app/assets
+COPY ./app/test /app/test
+CMD ["vender/phpunit/phpunit/phpunit", "tests"]
+
+################################################################################
 # production
 ################################################################################
 FROM php as prod
