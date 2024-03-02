@@ -58,5 +58,6 @@ ENV TZ Asia/Tokyo
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib /usr/local/lib
 
-COPY ./app /workspace/app
+COPY ./app/src /app/src
+COPY ./app/assets /app/assets
 CMD ["echo", "app is running correctly."]
