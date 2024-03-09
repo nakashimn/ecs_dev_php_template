@@ -16,9 +16,6 @@ RUN mv composer.phar /usr/local/bin/composer
 ################################################################################
 FROM php as dev
 
-ARG GIT_USERNAME
-ARG GIT_EMAIL_ADDRESS
-
 COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /usr/local/lib /usr/local/lib
 
@@ -29,8 +26,6 @@ RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
 RUN git config --global --add safe.directory /workspace
-RUN git config --global user.name ${GIT_USERNAME}
-RUN git config --global user.email ${GIT_EMAIL_ADDRESS}
 
 ################################################################################
 # testing

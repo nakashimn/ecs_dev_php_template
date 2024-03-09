@@ -4,9 +4,6 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: dev
-      args:
-        GIT_USERNAME: ${GIT_USERNAME}
-        GIT_EMAIL_ADDRESS: ${GIT_EMAIL_ADDRESS}
     container_name: ecs_dev_php_template
     hostname: ecs_dev_php_template
     shm_size: '4gb'
@@ -16,5 +13,9 @@ services:
       - $PWD/:/workspace:cached
       - $PWD/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini:cached
     environment:
+      GIT_AUTHOR_NAME: ${GIT_USERNAME}
+      GIT_COMMITTER_NAME: ${GIT_USERNAME}
+      GIT_AUTHOR_EMAIL: ${GIT_EMAIL_ADDRESS}
+      GIT_COMMITTER_EMAIL: ${GIT_EMAIL_ADDRESS}
       TZ: Asia/Tokyo
     tty: true
